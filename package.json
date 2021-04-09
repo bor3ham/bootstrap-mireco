@@ -1,5 +1,5 @@
 {
-  "name": "mireco",
+  "name": "bootstrap-mireco",
   "version": "0.0.1",
   "description": "Mireco wrapped in bootstrap styles",
   "main": "main.js",
