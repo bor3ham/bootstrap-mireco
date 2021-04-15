@@ -1255,12 +1255,17 @@ bn.js@^5.0.0, bn.js@^5.1.1:
   resolved "https://registry.yarnpkg.com/bn.js/-/bn.js-5.2.0.tgz#358860674396c6997771a9d051fcc1b57d4ae002"
   integrity sha512-D7iWRBvnZE8ecXiLj/9wbxH7Tk79fAh8IHaTNq1RWRixsS02W+5qS+iE9yq6RYl0asXx5tw0bLhmT5pIfbSquw==
 
-bootstrap-mireco@^0.0.0:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/bootstrap-mireco/-/bootstrap-mireco-0.0.1.tgz#f5e3148bc499a019d688008f9bbec517f72d1483"
-  integrity sha512-S5KUAYq8t5L4XAWqA52VyjTHJ7TSrfI03j2+FoDEyhREsVSbpNg0oq900NLLdhzdSy03hRgqJH7P+ajdxc91Uw==
+bootstrap-mireco@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/bootstrap-mireco/-/bootstrap-mireco-0.0.2.tgz#d75ae2e499ef29b1d4b9b977a847ffd7a0e0a5ad"
+  integrity sha512-Xu57P/3lPW0aMNPP0jbtvLKQanRI5Ia5ARgzCTsTmjCKbNmU/6mIWBtACdR1/WQ7VACEIXuCRDjnV6DeryCTZA==
   dependencies:
-    mireco "^0.0.29"
+    mireco "^0.1.1"
+
+bootstrap@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
+  integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
 
 brace-expansion@^1.1.7:
   version "1.1.11"
@@ -2769,10 +2774,10 @@ minimist@^1.2.0, minimist@^1.2.5:
   resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.5.tgz#67d66014b66a6a8aaa0c083c5fd58df4e4e97602"
   integrity sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==
 
-mireco@^0.0.29:
-  version "0.0.29"
-  resolved "https://registry.yarnpkg.com/mireco/-/mireco-0.0.29.tgz#dd9f7734c0e50dbffb3052070ed5c035afec8184"
-  integrity sha512-7Lgyk37kAAiCWMRPnLqHv6nO25zX9sBrWLBeW2t6rHKJCdLqcka9G8YF4vSvARCN0fbPoKa7fUzLFuIbceZTfA==
+mireco@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/mireco/-/mireco-0.1.1.tgz#e8f72eeeede35df2ff1185d820bb57871c6f1c8b"
+  integrity sha512-brDfAu+vJRttTbsC8U9/oAJpSsrLyJ99liwul05NXKJGc0DGIXc2BByICjwfECsrgC9H+lpcxhwWSddHSPr3bA==
   dependencies:
     classnames "^2.2.6"
     date-fns "^2.3.0"

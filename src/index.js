@@ -1,1 +1,1 @@
-console.log('hello bootstrap mireco')
+export * from 'inputs'
