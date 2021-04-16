@@ -64,7 +64,7 @@ typings/
 dist/
 
 # packaged js
-main.js
+inputs.js
 constants.js
 components.js
 prop-types.js

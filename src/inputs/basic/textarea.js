@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Textarea } from 'mireco/main'
+import { Textarea } from 'mireco/inputs'
 
 function BootstrapTextarea(props) {
   return (

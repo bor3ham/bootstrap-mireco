@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { Text } from 'mireco/main'
+import { Text } from 'mireco/inputs'
 
 function BootstrapText(props) {
   return (

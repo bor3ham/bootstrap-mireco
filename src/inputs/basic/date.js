@@ -1,17 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Select } from 'mireco/inputs'
+import { Date as DateInput } from 'mireco/inputs'
 
-function BootstrapSelect(props) {
+function BootstrapDate(props) {
   return (
-    <Select
+    <DateInput
       {...props}
       textClassName="form-control"
     />
   )
 }
-BootstrapSelect.propTypes = {
+BootstrapDate.propTypes = {
   className: PropTypes.string,
 }
 
-export default BootstrapSelect
+export default BootstrapDate

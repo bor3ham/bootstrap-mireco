@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
-import { CheckboxInput } from 'mireco/main'
+import { CheckboxInput } from 'mireco/inputs'
 
 function BootstrapCheckboxInput(props) {
   return (
