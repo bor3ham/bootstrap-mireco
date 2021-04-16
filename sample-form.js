@@ -1,9 +1,17 @@
 import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
-import { Checkbox, Text, Textarea, Select, Date, Datetime } from 'bootstrap-mireco'
+import {
+  Checkbox,
+  Text,
+  Textarea,
+  Select,
+  AsyncSelect,
+  Date as DateInput,
+  Datetime,
+} from 'bootstrap-mireco/inputs'
 
-const CLEARABLE_SELECT_OPTIONS = [
+const SELECT_OPTIONS = [
   {value: 'closed', label: 'Closed'},
   {value: 'pending', label: 'Pending Investigation'},
   {value: 'conflict_interest', label: 'Conflict of Interest'},
@@ -11,12 +19,34 @@ const CLEARABLE_SELECT_OPTIONS = [
   {value: 'solved', label: 'Solved'},
   {value: 'bungled', label: 'Ruined'},
   {value: 'false_alarm', label: 'False Alarm'},
+  {value: 'cold', label: 'Cold'},
+  {value: 'brief', label: 'Brief'},
 ]
-const REQUIRED_SELECT_OPTIONS = [
-  {value: 'red', label: 'Furious Red'},
-  {value: 'green', label: 'Forest Green'},
-  {value: 'blue', label: 'Sky Blue'},
-]
+function loadResults(searchTerm) {
+  const keyedTerm = searchTerm.toLowerCase().trim().replace(' ', '_')
+  return new Promise((resolve, reject) => {
+    window.setTimeout(() => {
+      resolve([
+        {
+          value: `${keyedTerm}_rusted`,
+          label: `${searchTerm} Rusted`,
+        },
+        {
+          value: `${keyedTerm}`,
+          label: `${searchTerm} (500)`,
+        },
+        {
+          value: `new_${keyedTerm}`,
+          label: `New ${searchTerm}`,
+        },
+        {
+          value: 'unfiltered_result',
+          label: 'Result to test filtering is not happening',
+        },
+      ])
+    }, 1000)
+  })
+}
 
 function SampleForm() {
 
@@ -32,14 +62,14 @@ function SampleForm() {
   const [checkbox, setCheckbox] = useState(false)
   const [text, setText] = useState('')
   const [textarea, setTextarea] = useState('')
-  const [clearableSelect, setClearableSelect] = useState(null)
-  const [requiredSelect, setRequiredSelect] = useState(REQUIRED_SELECT_OPTIONS[0].value)
+  const [select, setSelect] = useState(null)
+  const [asyncSelect, setAsyncSelect] = useState(null)
   const [date, setDate] = useState(null)
-  const [datetime, setDatetime] = useState(null)
+  // const [datetime, setDatetime] = useState(null)
 
   return (
     <>
-      <div className="form-group form-check">
+      <div className="form-group">
         <Checkbox
           id="disable"
           value={disabled}
@@ -47,7 +77,7 @@ function SampleForm() {
           label="Disable form"
         />
       </div>
-      <div className="form-group form-check">
+      <div className="form-group">
         <Checkbox
           id="block"
           value={block}
@@ -57,7 +87,7 @@ function SampleForm() {
       </div>
       <div className="card">
         <div className="card-body">
-          <div className="form-group form-check">
+          <div className="form-group">
             <Checkbox
               id="check"
               value={checkbox}
@@ -67,7 +97,9 @@ function SampleForm() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="text">Text</label>
             <Text
+              id="text"
               placeholder="Text"
               value={text}
               onChange={setText}
@@ -75,7 +107,9 @@ function SampleForm() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="textarea">Textarea</label>
             <Textarea
+              id="textarea"
               placeholder="Textarea"
               value={textarea}
               onChange={setTextarea}
@@ -83,33 +117,37 @@ function SampleForm() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="clearable-select">Select</label>
             <Select
-              placeholder="Clearable Select"
-              value={clearableSelect}
-              onChange={(newValue, wasBlur) => setClearableSelect(newValue)}
-              options={CLEARABLE_SELECT_OPTIONS}
+              id="clearable-select"
+              placeholder="Case Status"
+              value={select}
+              onChange={(newValue, wasBlur) => setSelect(newValue)}
+              options={SELECT_OPTIONS}
               {...fieldProps}
             />
           </div>
           <div className="form-group">
-            <Select
-              placeholder="Required Select"
-              value={requiredSelect}
-              onChange={(newValue, wasBlur) => setRequiredSelect(newValue)}
-              options={REQUIRED_SELECT_OPTIONS}
-              nullable={false}
+            <label htmlFor="async-select">Async Select</label>
+            <AsyncSelect
+              id="async-select"
+              placeholder="Favourite Movie"
+              value={asyncSelect}
+              onChange={(newValue, wasBlur) => setAsyncSelect(newValue)}
+              getOptions={loadResults}
               {...fieldProps}
             />
           </div>
-          {/* <div className="form-group"> */}
-          {/*   <Date */}
-          {/*     placeholder="Date" */}
-          {/*     block */}
-          {/*     value={date} */}
-          {/*     onChange={setDate} */}
-          {/*     {...fieldProps} */}
-          {/*   /> */}
-          {/* </div> */}
+          <div className="form-group">
+            <label htmlFor="date">Date</label>
+            <DateInput
+              id="date"
+              placeholder="Date"
+              value={date}
+              onChange={setDate}
+              {...fieldProps}
+            />
+          </div>
           {/* <div className="form-group"> */}
           {/*   <Datetime */}
           {/*     placeholder="Datetime" */}
