@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom'
 
 import {
   Checkbox,
+  Date as DateInput,
+  Select,
   Text,
   Textarea,
-  Select,
+  Time,
   AsyncSelect,
-  Date as DateInput,
   Datetime,
+  DatetimeRange,
 } from 'bootstrap-mireco/inputs'
 
 const SELECT_OPTIONS = [
@@ -49,7 +51,6 @@ function loadResults(searchTerm) {
 }
 
 function SampleForm() {
-
   // form state
   const [disabled, setDisabled] = useState(false)
   const [block, setBlock] = useState(true)
@@ -58,14 +59,22 @@ function SampleForm() {
     block,
   }
 
-  // form values
+  // form values (basic)
   const [checkbox, setCheckbox] = useState(false)
+  const [date, setDate] = useState(null)
+  const [select, setSelect] = useState(null)
   const [text, setText] = useState('')
   const [textarea, setTextarea] = useState('')
-  const [select, setSelect] = useState(null)
+  const [time, setTime] = useState(null)
+  // form values (compound)
   const [asyncSelect, setAsyncSelect] = useState(null)
-  const [date, setDate] = useState(null)
-  // const [datetime, setDatetime] = useState(null)
+  const [datetime, setDatetime] = useState(null)
+  const [datetimeRange, setDatetimeRange] = useState(null)
+
+  const handleSubmit = (event) => {
+    console.log('submitted!')
+    event.preventDefault()
+  }
 
   return (
     <>
@@ -85,14 +94,36 @@ function SampleForm() {
           label="Block mode"
         />
       </div>
-      <div className="card">
+      <form className="card" onSubmit={handleSubmit}>
         <div className="card-body">
+          <h5 className="card-title" style={{marginTop: 0}}>Basic</h5>
           <div className="form-group">
             <Checkbox
               id="check"
               value={checkbox}
               onChange={setCheckbox}
               label="Checkbox"
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="date">Date</label>
+            <DateInput
+              id="date"
+              placeholder="Date"
+              value={date}
+              onChange={(newValue, wasBlur) => setDate(newValue)}
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="clearable-select">Select</label>
+            <Select
+              id="clearable-select"
+              placeholder="Case Status"
+              value={select}
+              onChange={(newValue, wasBlur) => setSelect(newValue)}
+              options={SELECT_OPTIONS}
               {...fieldProps}
             />
           </div>
@@ -117,16 +148,18 @@ function SampleForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="clearable-select">Select</label>
-            <Select
-              id="clearable-select"
-              placeholder="Case Status"
-              value={select}
-              onChange={(newValue, wasBlur) => setSelect(newValue)}
-              options={SELECT_OPTIONS}
+            <label htmlFor="time">Time</label>
+            <Time
+              id="time"
+              placeholder="Time"
+              value={time}
+              onChange={(newValue, wasBlur) => setTime(newValue)}
               {...fieldProps}
             />
           </div>
+        </div>
+        <div className="card-body border-top">
+          <h5 className="card-title" style={{marginTop: 0}}>Compound</h5>
           <div className="form-group">
             <label htmlFor="async-select">Async Select</label>
             <AsyncSelect
@@ -139,26 +172,30 @@ function SampleForm() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="date">Date</label>
-            <DateInput
-              id="date"
-              placeholder="Date"
-              value={date}
-              onChange={setDate}
+            <label htmlFor="datetime">Datetime</label>
+            <Datetime
+              id="datetime"
+              block
+              value={datetime}
+              onChange={(newValue, wasBlur) => setDatetime(newValue)}
               {...fieldProps}
             />
           </div>
-          {/* <div className="form-group"> */}
-          {/*   <Datetime */}
-          {/*     placeholder="Datetime" */}
-          {/*     block */}
-          {/*     value={datetime} */}
-          {/*     onChange={setDatetime} */}
-          {/*     {...fieldProps} */}
-          {/*   /> */}
-          {/* </div> */}
+          <div className="form-group">
+            <label htmlFor="datetimerange">Datetime Range</label>
+            <DatetimeRange
+              id="datetimerange"
+              block
+              value={datetimeRange}
+              onChange={(newValue, wasBlur) => setDatetimeRange(newValue)}
+              {...fieldProps}
+            />
+          </div>
         </div>
-      </div>
+        <div className="card-footer">
+          <button type="submit" className="btn btn-primary">Submit</button>
+        </div>
+      </form>
     </>
   )
 }
