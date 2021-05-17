@@ -84,13 +84,24 @@
               opacity: 0.5
 
 .MIRECO-clear-button
-  padding: 0 0.1rem
+  padding: 0.5rem 0.1rem
   line-height: 1rem
-  background: none !important
-  border: none !important
+  height: calc(1.5em + 0.75rem + 2px)
   > svg
     vertical-align: top
     height: 1rem
+  &:not(.btn)
+    background: none !important
+    border: none !important
+  &.btn
+    border-color: #ced4da
+    background-color: #fff
+    transition: none
+    &:hover
+      background-color: #f8f9fa
+    &:disabled
+      opacity: 1
+      background: #e9ecef
 
 .MIRECO-spinner
   path
