@@ -18,7 +18,7 @@
     "prepare": "npm run build"
   },
   "dependencies": {
-    "mireco": "^0.1.1"
+    "mireco": "^0.1.2"
   },
   "peerDependencies": {
     "react": "~16.8.6",
