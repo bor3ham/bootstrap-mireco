@@ -4,6 +4,9 @@ import ReactDOM from 'react-dom'
 import {
   Checkbox,
   Date as DateInput,
+  Duration,
+  MultiSelect,
+  Number,
   Select,
   Text,
   Textarea,
@@ -14,15 +17,12 @@ import {
 } from 'bootstrap-mireco/inputs'
 
 const SELECT_OPTIONS = [
-  {value: 'closed', label: 'Closed'},
-  {value: 'pending', label: 'Pending Investigation'},
-  {value: 'conflict_interest', label: 'Conflict of Interest'},
-  {value: 'transferred', label: 'Transferred to Another Department'},
-  {value: 'solved', label: 'Solved'},
-  {value: 'bungled', label: 'Ruined'},
-  {value: 'false_alarm', label: 'False Alarm'},
-  {value: 'cold', label: 'Cold'},
-  {value: 'brief', label: 'Brief'},
+  {value: 'red', label: 'Red'},
+  {value: 'orange', label: 'Orange'},
+  {value: 'yellow', label: 'Yellow'},
+  {value: 'green', label: 'Forest Green'},
+  {value: 'blue', label: 'Blue-ish Yellow'},
+  {value: 'brown', label: 'Forest Brown'},
 ]
 function loadResults(searchTerm) {
   const keyedTerm = searchTerm.toLowerCase().trim().replace(' ', '_')
@@ -62,6 +62,9 @@ function SampleForm() {
   // form values (basic)
   const [checkbox, setCheckbox] = useState(false)
   const [date, setDate] = useState(null)
+  const [duration, setDuration] = useState(null)
+  const [multiSelect, setMultiSelect] = useState([])
+  const [number, setNumber] = useState(null)
   const [select, setSelect] = useState(null)
   const [text, setText] = useState('')
   const [textarea, setTextarea] = useState('')
@@ -108,6 +111,7 @@ function SampleForm() {
           </div>
           <div className="form-group">
             <label htmlFor="date">Date</label>
+            {!block && ' '}
             <DateInput
               id="date"
               placeholder="Date"
@@ -117,10 +121,45 @@ function SampleForm() {
             />
           </div>
           <div className="form-group">
+            <label htmlFor="duration">Duration</label>
+            {!block && ' '}
+            <Duration
+              id="duration"
+              placeholder="Duration"
+              value={duration}
+              onChange={(newValue, wasBlur) => setDuration(newValue)}
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="multi-select">Multi Select</label>
+            {!block && ' '}
+            <MultiSelect
+              id="multi-select"
+              placeholder="Multi Select"
+              value={multiSelect}
+              onChange={(newValue, wasBlur) => setMultiSelect(newValue)}
+              options={SELECT_OPTIONS}
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="number">Number</label>
+            {!block && ' '}
+            <Number
+              id="number"
+              placeholder="Number"
+              value={number}
+              onChange={setNumber}
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
             <label htmlFor="clearable-select">Select</label>
+            {!block && ' '}
             <Select
               id="clearable-select"
-              placeholder="Case Status"
+              placeholder="Select"
               value={select}
               onChange={(newValue, wasBlur) => setSelect(newValue)}
               options={SELECT_OPTIONS}
@@ -129,6 +168,7 @@ function SampleForm() {
           </div>
           <div className="form-group">
             <label htmlFor="text">Text</label>
+            {!block && ' '}
             <Text
               id="text"
               placeholder="Text"
@@ -139,6 +179,7 @@ function SampleForm() {
           </div>
           <div className="form-group">
             <label htmlFor="textarea">Textarea</label>
+            {!block && ' '}
             <Textarea
               id="textarea"
               placeholder="Textarea"
@@ -149,6 +190,7 @@ function SampleForm() {
           </div>
           <div className="form-group">
             <label htmlFor="time">Time</label>
+            {!block && ' '}
             <Time
               id="time"
               placeholder="Time"
@@ -162,6 +204,7 @@ function SampleForm() {
           <h5 className="card-title" style={{marginTop: 0}}>Compound</h5>
           <div className="form-group">
             <label htmlFor="async-select">Async Select</label>
+            {!block && ' '}
             <AsyncSelect
               id="async-select"
               placeholder="Favourite Movie"
@@ -173,6 +216,7 @@ function SampleForm() {
           </div>
           <div className="form-group">
             <label htmlFor="datetime">Datetime</label>
+            {!block && ' '}
             <Datetime
               id="datetime"
               block
@@ -183,6 +227,7 @@ function SampleForm() {
           </div>
           <div className="form-group">
             <label htmlFor="datetimerange">Datetime Range</label>
+            {!block && ' '}
             <DatetimeRange
               id="datetimerange"
               block
