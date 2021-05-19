@@ -108,11 +108,60 @@
     // stroke: #17a2b8 !important
     stroke: rgb(0, 123, 255) !important
 
-.MIRECO-widget-text
-  > input
-    padding-right: calc(0.75rem + 24px)
-  &.clearable input
-    padding-right: calc(0.75rem + 0.2rem + 48px)
+.MIRECO-datetime.block, .MIRECO-datetime-range.block
+  margin-bottom: -1rem
+
+.MIRECO-multi-select
+  padding: 0.375rem 0.75rem
+  padding-bottom: 0
+  font-size: 1rem
+  font-weight: 400
+  line-height: 1.5
+  color: #495057
+  background-color: #fff
+  background-clip: padding-box
+  border: 1px solid #ced4da
+  border-radius: 0.25rem
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+  &.in-focus
+    color: #495057
+    background-color: #fff
+    border-color: #80bdff
+    outline: 0
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+
+  > ul.selected
+    > li
+      margin: 0
+      margin-bottom: 0.375rem
+      &.text .MIRECO-text
+        outline: none
+      &.option
+        position: relative
+        box-sizing: border-box
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+        max-width: 60%
+        border: thin-line solid #ccc
+        background: #ddd
+        border-radius: 2px
+        padding-left: 0.25rem
+        line-height: 1.5em
+        padding-right: 24px
+        color: #333
+
+        > .MIRECO-clear-button
+          position: absolute
+          right: 0
+          top: 50%
+          transform: translateY(-50%) scale(0.75, 0.75)
+          border: none !important
+          background: none !important
+          padding: 0
+          vertical-align: middle
+
+.MIRECO-widget-text, .MIRECO-multi-select
   > .MIRECO-clear-button
     right: calc(0.6rem + 24px)
   > svg
@@ -120,8 +169,16 @@
   &:after
     content: ' '
     position: absolute
-    top: 50%
+    top: 6px
     right: calc(0.6rem + 24px)
-    height: 24px
-    margin-top: -12px
+    height: calc(100% - 12px)
     border-right: 1px solid #ced4da
+.MIRECO-widget-text
+  > input
+    padding-right: calc(0.75rem + 24px)
+  &.clearable input
+    padding-right: calc(0.75rem + 0.2rem + 48px)
+.MIRECO-multi-select
+  padding-right: calc(0.75rem + 24px)
+  &.clearable
+    padding-right: calc(0.75rem + 0.2rem + 48px)
