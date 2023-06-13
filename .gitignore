@@ -61,22 +61,14 @@ typings/
 .next
 
 # build output
-dist/
-
-# packaged js
-inputs.js
-constants.js
-components.js
-prop-types.js
+dist
 
 # demo build
-demo/dist/*.js
+demo/dist
 
 # jekyll build
 demo/_site
-demo/dist/*.js
-demo/dist/*.css
 demo/.jekyll-cache
 
-# webpack build analysis
-report.html
+# mac bullshit
+*.DS_Store

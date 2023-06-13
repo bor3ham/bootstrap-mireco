@@ -38,7 +38,11 @@ const external = [
 
 exports.config = {
   plugins: [
-    stylusLoader(),
+    stylusLoader({
+      stylusOptions: {
+        includeCss: true,
+      },
+    }),
     metafilePlugin,
     typescriptPlugin,
   ],
