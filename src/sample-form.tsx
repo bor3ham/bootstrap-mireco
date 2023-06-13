@@ -14,7 +14,8 @@ import {
   AsyncSelect,
   Datetime,
   DatetimeRange,
-} from 'bootstrap-mireco/inputs'
+} from 'bootstrap-mireco'
+import type { SelectOption } from 'bootstrap-mireco' 
 
 const SELECT_OPTIONS = [
   {value: 'red', label: 'Red'},
@@ -24,7 +25,7 @@ const SELECT_OPTIONS = [
   {value: 'blue', label: 'Blue-ish Yellow'},
   {value: 'brown', label: 'Forest Brown'},
 ]
-function loadResults(searchTerm) {
+function loadResults(searchTerm: string): Promise<SelectOption[]> {
   const keyedTerm = searchTerm.toLowerCase().trim().replace(' ', '_')
   return new Promise((resolve, reject) => {
     window.setTimeout(() => {
@@ -63,18 +64,18 @@ function SampleForm() {
   const [checkbox, setCheckbox] = useState(false)
   const [date, setDate] = useState(null)
   const [duration, setDuration] = useState(null)
-  const [multiSelect, setMultiSelect] = useState([])
+  const [multiSelect, setMultiSelect] = useState<SelectOption[]>([])
   const [number, setNumber] = useState(null)
   const [select, setSelect] = useState(null)
-  const [text, setText] = useState('')
-  const [textarea, setTextarea] = useState('')
+  const [text, setText] = useState<string>('')
+  const [textarea, setTextarea] = useState<string>('')
   const [time, setTime] = useState(null)
   // form values (compound)
   const [asyncSelect, setAsyncSelect] = useState(null)
   const [datetime, setDatetime] = useState(null)
   const [datetimeRange, setDatetimeRange] = useState(null)
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: React.FormEvent) => {
     console.log('submitted!')
     event.preventDefault()
   }
@@ -86,16 +87,18 @@ function SampleForm() {
           id="disable"
           value={disabled}
           onChange={setDisabled}
-          label="Disable form"
-        />
+        >
+          Disable form
+        </Checkbox>
       </div>
       <div className="form-group">
         <Checkbox
           id="block"
           value={block}
           onChange={setBlock}
-          label="Block mode"
-        />
+        >
+          Block mode
+        </Checkbox>
       </div>
       <form className="card" onSubmit={handleSubmit}>
         <div className="card-body">
@@ -105,9 +108,10 @@ function SampleForm() {
               id="check"
               value={checkbox}
               onChange={setCheckbox}
-              label="Checkbox"
               {...fieldProps}
-            />
+            >
+              Checkbox
+            </Checkbox>
           </div>
           <div className="form-group">
             <label htmlFor="date">Date</label>
@@ -219,7 +223,6 @@ function SampleForm() {
             {!block && ' '}
             <Datetime
               id="datetime"
-              block
               value={datetime}
               onChange={(newValue, wasBlur) => setDatetime(newValue)}
               {...fieldProps}
@@ -230,7 +233,6 @@ function SampleForm() {
             {!block && ' '}
             <DatetimeRange
               id="datetimerange"
-              block
               value={datetimeRange}
               onChange={(newValue, wasBlur) => setDatetimeRange(newValue)}
               {...fieldProps}
