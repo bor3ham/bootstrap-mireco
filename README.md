@@ -14,7 +14,7 @@ For more information on Mireco, head over to its [project page here][2].
 - Use like you would mireco:
 
 ```
-import React, { useState} from 'react'
+import React, { useState } from 'react'
 import { Text } from 'bootstrap-mireco'
 
 export const Form = () => {
