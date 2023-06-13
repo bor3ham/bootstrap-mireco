@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import ReactDOM from 'react-dom'
 
 import {
+  CalendarMonth,
   Checkbox,
   Date as DateInput,
   Duration,
@@ -14,6 +15,7 @@ import {
   AsyncSelect,
   Datetime,
   DatetimeRange,
+  Month,
 } from 'bootstrap-mireco'
 import type { SelectOption } from 'bootstrap-mireco' 
 
@@ -61,9 +63,11 @@ function SampleForm() {
   }
 
   // form values (basic)
+  const [calendarMonth, setCalendarMonth] = useState(null)
   const [checkbox, setCheckbox] = useState(false)
   const [date, setDate] = useState(null)
   const [duration, setDuration] = useState(null)
+  const [month, setMonth] = useState(null)
   const [multiSelect, setMultiSelect] = useState<SelectOption[]>([])
   const [number, setNumber] = useState(null)
   const [select, setSelect] = useState(null)
@@ -104,6 +108,17 @@ function SampleForm() {
         <div className="card-body">
           <h5 className="card-title" style={{marginTop: 0}}>Basic</h5>
           <div className="form-group">
+            <label htmlFor="calendarMonth">Calendar Month</label>
+              {!block && ' '}
+              <CalendarMonth
+                id="calendarMonth"
+                placeholder="Calendar Month"
+                value={calendarMonth}
+                onChange={(newValue, wasBlur) => setCalendarMonth(newValue)}
+                {...fieldProps}
+              />
+          </div>
+          <div className="form-group">
             <Checkbox
               id="check"
               value={checkbox}
@@ -132,6 +147,17 @@ function SampleForm() {
               placeholder="Duration"
               value={duration}
               onChange={(newValue, wasBlur) => setDuration(newValue)}
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="month">Month</label>
+            {!block && ' '}
+            <Month
+              id="month"
+              placeholder="Month"
+              value={month}
+              onChange={(newValue, wasBlur) => setMonth(newValue)}
               {...fieldProps}
             />
           </div>
