@@ -212,7 +212,11 @@
           padding: 0
           vertical-align: middle
 
-.MIRECO-widget-text, .MIRECO-multi-select
+.MIRECO-widget-text
+  > .MIRECO-clear-button
+    right: 0
+
+.MIRECO-widget-text.has-icon, .MIRECO-multi-select
   > .MIRECO-clear-button
     right: calc(0.6rem + 24px)
   > svg
@@ -235,3 +239,34 @@
   padding-right: calc(0.75rem + 24px)
   &.clearable
     padding-right: calc(0.75rem + 0.2rem + 48px)
+
+.MIRECO-multi-select
+  .MIRECO-chevron-down, > .MIRECO-clear-button .MIRECO-cross
+    path
+      transition: stroke 0.15s ease-in-out
+  &:not(.in-focus)
+    .MIRECO-chevron-down, > .MIRECO-clear-button .MIRECO-cross
+      path
+        stroke: #ccc !important
+
+.MIRECO-widget-text:not(.in-focus)
+  .MIRECO-calendar, .MIRECO-cross, .MIRECO-chevron-down, .MIRECO-clock, .MIRECO-hourglass
+    path, rect, circle
+      transition: stroke 0.15s ease-in-out, fill 0.15s ease-in-out
+
+  &:not(.in-focus)
+    .MIRECO-calendar, .MIRECO-cross, .MIRECO-chevron-down
+      path, rect, circle
+        stroke: #ccc !important
+    .MIRECO-clock
+      path
+        stroke: #ccc !important
+      circle:first-child
+        stroke: #ccc !important
+      circle:last-child
+        fill: #ccc !important
+    .MIRECO-hourglass
+      path:nth-child(1)
+        stroke: #ccc !important
+      path:nth-child(2)
+        fill: #ccc !important

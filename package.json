@@ -40,6 +40,6 @@
   },
   "dependencies": {
     "classnames": "^2.3.2",
-    "mireco": "^1.0.6"
+    "mireco": "^1.0.9"
   }
 }
