@@ -16,6 +16,7 @@ import {
   Datetime,
   DatetimeRange,
   Month,
+  Range,
 } from 'bootstrap-mireco'
 import type { SelectOption } from 'bootstrap-mireco' 
 
@@ -70,6 +71,7 @@ function SampleForm() {
   const [month, setMonth] = useState(null)
   const [multiSelect, setMultiSelect] = useState<SelectOption[]>([])
   const [number, setNumber] = useState(null)
+  const [range, setRange] = useState(null)
   const [select, setSelect] = useState(null)
   const [text, setText] = useState<string>('')
   const [textarea, setTextarea] = useState<string>('')
@@ -193,6 +195,16 @@ function SampleForm() {
               value={select}
               onChange={(newValue, wasBlur) => setSelect(newValue)}
               options={SELECT_OPTIONS}
+              {...fieldProps}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="range">Range</label>
+            {!block && ' '}
+            <Range
+              id="range"
+              value={range}
+              onChange={(newValue, wasBlur) => setRange(newValue)}
               {...fieldProps}
             />
           </div>
