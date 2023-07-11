@@ -30,7 +30,7 @@ const SELECT_OPTIONS = [
 ]
 function loadResults(searchTerm: string): Promise<SelectOption[]> {
   const keyedTerm = searchTerm.toLowerCase().trim().replace(' ', '_')
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     window.setTimeout(() => {
       resolve([
         {
@@ -54,7 +54,7 @@ function loadResults(searchTerm: string): Promise<SelectOption[]> {
   })
 }
 
-function SampleForm() {
+const SampleForm = () => {
   // form state
   const [disabled, setDisabled] = useState(false)
   const [block, setBlock] = useState(true)
@@ -116,7 +116,7 @@ function SampleForm() {
                 id="calendarMonth"
                 placeholder="Calendar Month"
                 value={calendarMonth}
-                onChange={(newValue, wasBlur) => setCalendarMonth(newValue)}
+                onChange={(newValue) => setCalendarMonth(newValue)}
                 {...fieldProps}
               />
           </div>
@@ -137,7 +137,7 @@ function SampleForm() {
               id="date"
               placeholder="Date"
               value={date}
-              onChange={(newValue, wasBlur) => setDate(newValue)}
+              onChange={(newValue) => setDate(newValue)}
               {...fieldProps}
             />
           </div>
@@ -148,7 +148,7 @@ function SampleForm() {
               id="duration"
               placeholder="Duration"
               value={duration}
-              onChange={(newValue, wasBlur) => setDuration(newValue)}
+              onChange={(newValue) => setDuration(newValue)}
               {...fieldProps}
             />
           </div>
@@ -159,7 +159,7 @@ function SampleForm() {
               id="month"
               placeholder="Month"
               value={month}
-              onChange={(newValue, wasBlur) => setMonth(newValue)}
+              onChange={(newValue) => setMonth(newValue)}
               {...fieldProps}
             />
           </div>
@@ -170,7 +170,7 @@ function SampleForm() {
               id="multi-select"
               placeholder="Multi Select"
               value={multiSelect}
-              onChange={(newValue, wasBlur) => setMultiSelect(newValue)}
+              onChange={(newValue) => setMultiSelect(newValue)}
               options={SELECT_OPTIONS}
               {...fieldProps}
             />
@@ -193,7 +193,7 @@ function SampleForm() {
               id="clearable-select"
               placeholder="Select"
               value={select}
-              onChange={(newValue, wasBlur) => setSelect(newValue)}
+              onChange={(newValue) => setSelect(newValue)}
               options={SELECT_OPTIONS}
               {...fieldProps}
             />
@@ -204,7 +204,7 @@ function SampleForm() {
             <Range
               id="range"
               value={range}
-              onChange={(newValue, wasBlur) => setRange(newValue)}
+              onChange={(newValue) => setRange(newValue)}
               {...fieldProps}
             />
           </div>
@@ -237,7 +237,7 @@ function SampleForm() {
               id="time"
               placeholder="Time"
               value={time}
-              onChange={(newValue, wasBlur) => setTime(newValue)}
+              onChange={(newValue) => setTime(newValue)}
               {...fieldProps}
             />
           </div>
@@ -251,7 +251,7 @@ function SampleForm() {
               id="async-select"
               placeholder="Favourite Movie"
               value={asyncSelect}
-              onChange={(newValue, wasBlur) => setAsyncSelect(newValue)}
+              onChange={(newValue) => setAsyncSelect(newValue)}
               getOptions={loadResults}
               {...fieldProps}
             />
@@ -262,7 +262,7 @@ function SampleForm() {
             <Datetime
               id="datetime"
               value={datetime}
-              onChange={(newValue, wasBlur) => setDatetime(newValue)}
+              onChange={(newValue) => setDatetime(newValue)}
               {...fieldProps}
             />
           </div>
@@ -272,7 +272,7 @@ function SampleForm() {
             <DatetimeRange
               id="datetimerange"
               value={datetimeRange}
-              onChange={(newValue, wasBlur) => setDatetimeRange(newValue)}
+              onChange={(newValue) => setDatetimeRange(newValue)}
               {...fieldProps}
             />
           </div>
