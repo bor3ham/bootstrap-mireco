@@ -9,6 +9,6 @@ export const Time = forwardRef<HTMLInputElement, TimeProps>((props, ref) => (
   <BaseTime
     ref={ref}
     {...props}
-    textClassName={classNames(props.textClassName, 'form-control')}
+    className={classNames(props.className, 'form-control')}
   />
 ))

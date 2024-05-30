@@ -9,8 +9,6 @@ export const Datetime = forwardRef<HTMLDivElement, DatetimeProps>((props, ref) =
   <BaseDatetime
     ref={ref}
     {...props}
-    dateTextClassName={classNames(props.dateTextClassName, 'form-control')}
-    timeTextClassName={classNames(props.timeTextClassName, 'form-control')}
-    clearButtonClassName={classNames(props.clearButtonClassName, 'btn btn-light')}
+    className={classNames(props.className, 'form-control')}
   />
 ))

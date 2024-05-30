@@ -15,6 +15,10 @@ export {
   Text,
   Textarea,
   Time,
+  AsyncSelect,
+  DatetimeRange,
+  Datetime,
+  DateRange,
 } from './inputs'
 export type {
   CalendarMonthProps,
@@ -30,16 +34,8 @@ export type {
   TextProps,
   TextareaProps,
   TimeProps,
-} from './inputs'
-
-// compound inputs
-export {
-  AsyncSelect,
-  DatetimeRange,
-  Datetime,
-} from './inputs'
-export type {
   AsyncSelectProps,
   DatetimeRangeProps,
   DatetimeProps,
+  DateRangeProps,
 } from './inputs'

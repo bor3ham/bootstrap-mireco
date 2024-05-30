@@ -1,0 +1,37 @@
+.MIRECO-dropdown
+  max-height: 300px
+  overflow-y: auto
+  box-sizing: border-box
+  -webkit-overflow-scrolling: touch
+  padding: 4px 0
+
+  > li
+    margin: 0
+    padding: 0
+
+    button, &.none
+      font-size: 0.875rem
+      border: none
+      padding: 8px 12px
+      display: block
+      width: 100%
+      user-select: none
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
+      box-sizing: border-box
+      cursor: default
+      text-align: left
+    
+    button:not(:disabled):not(.disabled)
+      cursor: pointer
+
+    button
+      background: content-colour
+      color: content-text-colour
+      &:hover
+        background: content-hover-colour
+    &.current
+      button
+        background: current-colour
+        color: current-text-colour
+        &:hover
+          background: current-hover-colour

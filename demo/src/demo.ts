@@ -1,5 +1,5 @@
 import { init } from 'uptick-demo-site'
 
-import './sample-form.js'
+import './full-form.js'
 
 init()

@@ -9,7 +9,7 @@ const DateInput = forwardRef<HTMLInputElement, DateProps>((props, ref) => (
   <BaseDate
     ref={ref}
     {...props}
-    textClassName={classNames(props.textClassName, 'form-control')}
+    className={classNames(props.className, 'form-control')}
   />
 ))
 

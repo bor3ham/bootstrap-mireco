@@ -1,235 +1,66 @@
 @import '../node_modules/mireco/dist/layout.css'
 
-.MIRECO-dropdown
-  max-height: 300px
-  overflow-y: auto
-  padding-bottom: 4px
-  padding-top: 4px
-  box-sizing: border-box
-  -webkit-overflow-scrolling: touch
-  box-shadow: 0 0 0 1px hsla(0,0%,0%,0.1),0 4px 11px hsla(0,0%,0%,0.1)
-  border-radius: 4px
-  margin: 0
-  margin-top: 8px
+content-colour = #fff
+content-hover-colour = #eee
+content-text-colour = #000
+current-colour = #007bff
+current-hover-colour = #0b5ed7
+current-text-colour = #fff
+contained-colour = #cce5ff
+contained-hover-colour = hsl(216, 90%, 84%)
+contained-text-colour = #333
 
-  padding: 4px 0
+@import 'components/clear-button'
+@import 'components/controls-popover'
+@import 'components/day-calendar'
+@import 'components/dropdown'
+@import 'components/month-calendar'
+@import 'components/time-selector'
 
-  > li
-    margin: 0
-    padding: 0
-
-    button, &.none
-      font-size: 0.875rem
-      background: none
-      border: none
-      padding: 8px 12px
-      display: block
-      width: 100%
-      user-select: none
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0)
-      box-sizing: border-box
-      cursor: default
-      text-align: left
-
-    &.current button
-      background: #007bff
-      color: #fff
-    &:not(.current) button:hover
-      background: #deebff
-
-.MIRECO-day-calendar
-  box-shadow: 0 0 0 1px hsla(0,0%,0%,0.1),0 4px 11px hsla(0,0%,0%,0.1)
-  border-radius: 4px
-  margin-top: 8px
-  width: 18rem
-  height: 18rem
-  font-size: 0.875rem
-
-  > .calendar-header
-    margin: 0.5rem 0
-    h5
-      margin: 0
-      margin-left: 1rem
-      font-size: 0.875rem
-      font-weight: normal
-    button
-      background: none
-      outline: none
-      border: none
-      margin: 0
-      cursor: pointer
-
-  >table
-    tbody
-      tr
-        td, th
-          text-align: center
-          font-weight: normal
-        td
-          button
-            background: none
-            border: none
-            border-radius: 4px
-            &:focus
-              outline: none
-              border: none
-          &.highlight button
-            background: #eee
-          &.current button
-            background: #007bff
-            color: #fff
-          &:not(.current)
-            button:not(:disabled)
-              cursor: pointer
-              &:hover
-                background-color: #deebff
-          &.outside-month
-            button
-              opacity: 0.5
-
-.MIRECO-month-calendar
-  box-shadow: 0 0 0 1px hsla(0,0%,0%,0.1),0 4px 11px hsla(0,0%,0%,0.1)
-  border-radius: 4px
-  margin-top: 8px
-  width: 18rem
-  font-size: 0.875rem
-
-  > .calendar-header
-    margin: 0.5rem 0
-    h5
-      margin: 0
-      margin-left: 1rem
-      font-size: 0.875rem
-      font-weight: normal
-    button
-      background: none
-      outline: none
-      border: none
-      margin: 0
-      cursor: pointer
-
-  ol.months li
-    button
-      background: none
-      border: none
-      border-radius: 4px
-      &:focus
-        outline: none
-        border: none
-    
-    &.current button
-      background: #007bff
-      color: #fff
-    &:not(.current)
-      button:not(:disabled)
-        cursor: pointer
-        &:hover
-          background-color: #deebff
-
-.MIRECO-clear-button
-  padding: 0.5rem 0.1rem
-  line-height: 1rem
-  height: calc(1.5em + 0.75rem + 2px)
-  vertical-align: top
-  > svg
-    vertical-align: top
-    height: 1rem
-  &:not(.btn)
-    background: none !important
-    border: none !important
-  &.btn
-    border-color: #ced4da
-    background-color: #fff
-    transition: none
-    &:hover
-      background-color: #f8f9fa
-    &:disabled
-      opacity: 1
-      background: #e9ecef
+@import 'inputs/multi-select'
 
 .MIRECO-spinner
   path
     // stroke: #17a2b8 !important
     stroke: rgb(0, 123, 255) !important
 
-.MIRECO-datetime.block, .MIRECO-datetime-range.block
-  margin-bottom: -1rem
-
-.MIRECO-multi-select
-  padding: 0.375rem 0.75rem
-  padding-bottom: 0
-  font-size: 1rem
-  font-weight: 400
-  line-height: 1.5
-  color: #495057
-  background-color: #fff
-  background-clip: padding-box
-  border: 1px solid #ced4da
-  border-radius: 0.25rem
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
-
-  > input
-  
-  &.in-focus
-    color: #495057
-    background-color: #fff
-    border-color: #80bdff
-    outline: 0
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
-  
-  &.disabled
-    background: #e9ecef
-
-  > ul.selected
-    > li
-      margin: 0
-      margin-bottom: 0.375rem
-      &.text .MIRECO-text
-        outline: none
-        &::placeholder
-          color: #6c757d
-          opacity: 1
-      &.option
-        position: relative
-        box-sizing: border-box
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
-        max-width: 60%
-        border: thin-line solid #ccc
-        background: #ddd
-        border-radius: 2px
-        padding-left: 0.25rem
-        line-height: 1.5em
-        padding-right: 24px
-        color: #333
-
-        > .MIRECO-clear-button
-          position: absolute
-          right: 0
-          top: 50%
-          transform: translateY(-50%) scale(0.75, 0.75)
-          border: none !important
-          background: none !important
-          padding: 0
-          vertical-align: middle
-
 .MIRECO-widget-text
   > .MIRECO-clear-button
     right: 0
 
-.MIRECO-widget-text.has-icon, .MIRECO-multi-select
-  > .MIRECO-clear-button
-    right: calc(0.6rem + 24px)
-  > svg
-    right: 0.375rem
-  &:after
-    content: ' '
-    position: absolute
-    top: 6px
-    right: calc(0.6rem + 24px)
-    height: calc(100% - 12px)
-    border-right: 1px solid #ced4da
+.MIRECO-widget-block, .MIRECO-multi-select .MIRECO-text
+  &.has-icon
+    > .MIRECO-clear-button
+      right: calc(0.6rem + 24px)
+    > svg
+      right: 0.375rem
+    &:after
+      content: ' '
+      position: absolute
+      top: 6px
+      right: calc(0.6rem + 24px)
+      height: calc(100% - 12px)
+      border-right: 1px solid #ced4da
+
+.MIRECO-widget-block.form-control
+  padding: 0
+  cursor: text
+  &.in-focus
+    border-color: #80bdff
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+
+.MIRECO-text.MIRECO-embedded
+  border: none
+  background: none
+  padding: 0.375rem 0.75rem
+  &:focus-visible
+    outline: none
+
+.MIRECO-datetime-controls, .MIRECO-datetime-range-controls
+  .MIRECO-day-calendar
+    border-right: 1px solid rgba(0,0,0,.125)
+  .MIRECO-time-selector
+    height: 18rem
 
 .MIRECO-widget-text
   > input
@@ -242,33 +73,25 @@
   &.clearable
     padding-right: calc(0.75rem + 0.2rem + 48px)
 
-.MIRECO-multi-select
-  .MIRECO-chevron-down, > .MIRECO-clear-button .MIRECO-cross
-    path
-      transition: stroke 0.15s ease-in-out
-  &:not(.in-focus)
-    .MIRECO-chevron-down, > .MIRECO-clear-button .MIRECO-cross
-      path
-        stroke: #ccc !important
-
-.MIRECO-widget-text:not(.in-focus)
-  .MIRECO-calendar, .MIRECO-cross, .MIRECO-chevron-down, .MIRECO-clock, .MIRECO-hourglass
+.MIRECO-widget-block
+  > svg, button > svg
     path, rect, circle
       transition: stroke 0.15s ease-in-out, fill 0.15s ease-in-out
-
+  
   &:not(.in-focus)
-    .MIRECO-calendar, .MIRECO-cross, .MIRECO-chevron-down
-      path, rect, circle
-        stroke: #ccc !important
-    .MIRECO-clock
-      path
-        stroke: #ccc !important
-      circle:first-child
-        stroke: #ccc !important
-      circle:last-child
-        fill: #ccc !important
-    .MIRECO-hourglass
-      path:nth-child(1)
-        stroke: #ccc !important
-      path:nth-child(2)
-        fill: #ccc !important
+    > svg, > button:not(:hover) > svg
+      &.MIRECO-calendar, &.MIRECO-cross, &.MIRECO-chevron-down, &.MIRECO-chevron-left
+        path, rect, circle
+          stroke: #ccc !important
+      &.MIRECO-clock
+        path
+          stroke: #ccc !important
+        circle:first-child
+          stroke: #ccc !important
+        circle:last-child
+          fill: #ccc !important
+      &.MIRECO-hourglass
+        path:nth-child(1)
+          stroke: #ccc !important
+        path:nth-child(2)
+          fill: #ccc !important
