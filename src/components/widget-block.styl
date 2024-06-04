@@ -1,0 +1,30 @@
+standard-padding = 1rem
+
+.MIRECO-widget-block.has-icon
+  padding-right: "calc(%s + 24px)" % (standard-padding / 2)
+  &.ever-clearable
+    padding-right: "calc(%s + 48px)" % standard-padding
+  > .MIRECO-clear-button
+    right: "calc(%s + 24px)" % (standard-padding / 2)
+  
+  > svg, button > svg
+    path, rect, circle
+      transition: stroke 0.15s ease-in-out, fill 0.15s ease-in-out
+  
+  &:not(.in-focus)
+    > svg, > button:not(:hover) > svg
+      &.MIRECO-calendar, &.MIRECO-cross, &.MIRECO-chevron-down, &.MIRECO-chevron-left
+        path, rect, circle
+          stroke: #ccc !important
+      &.MIRECO-clock
+        path
+          stroke: #ccc !important
+        circle:first-child
+          stroke: #ccc !important
+        circle:last-child
+          fill: #ccc !important
+      &.MIRECO-hourglass
+        path:nth-child(1)
+          stroke: #ccc !important
+        path:nth-child(2)
+          fill: #ccc !important

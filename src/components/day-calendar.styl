@@ -2,22 +2,6 @@
   width: 18rem
   height: 18rem
   font-size: 0.875rem
-  padding: 0
-
-  > .calendar-header
-    margin: 0.5rem 0
-    h5
-      margin: 0
-      margin-left: 1rem
-      font-size: 0.875rem
-      font-weight: normal
-      text-align: center
-    button
-      background: none
-      outline: none
-      border: none
-      margin: 0
-      cursor: pointer
 
   > table
     tbody
@@ -90,3 +74,19 @@
           &:not(.selected)
             button:hover
               border-radius: 4px
+
+          corner-tag-size = 10px
+          corner-tag-margin = 2px
+          position: relative
+          &.today:after
+            content: ''
+            position: absolute
+            left: 0
+            top: 1px
+            width: 0
+            height: 0
+            border-style: solid
+            border-width: 0 0 corner-tag-size corner-tag-size
+            border-color: transparent transparent transparent #0dcaf0
+            border-top-left-radius: 2px
+            pointer-events: none

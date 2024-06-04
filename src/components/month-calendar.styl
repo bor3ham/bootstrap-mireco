@@ -1,24 +1,6 @@
 .MIRECO-month-calendar
-  box-shadow: 0 0 0 1px hsla(0,0%,0%,0.1),0 4px 11px hsla(0,0%,0%,0.1)
-  border-radius: 4px
-  margin-top: 8px
   width: 18rem
   font-size: 0.875rem
-
-  > .calendar-header
-    margin: 0.5rem 0
-    h5
-      margin: 0
-      margin-left: 1rem
-      font-size: 0.875rem
-      font-weight: normal
-      text-align: center
-    button
-      background: none
-      outline: none
-      border: none
-      margin: 0
-      cursor: pointer
 
   ol.months li
     button
@@ -39,12 +21,22 @@
         color: current-text-colour
         &:hover
           background: current-hover-colour
-    // &:not(.current).selected
-    //   button
-    //     background: contained-colour
-    //     color: contained-text-colour
-    //     &:hover
-    //       background: contained-hover-colour
     
     button:not(:disabled):not(.disabled)
       cursor: pointer
+
+    corner-tag-size = 10px
+    corner-tag-margin = 2px
+    position: relative
+    &.today:after
+      content: ''
+      position: absolute
+      left: 0
+      top: 0
+      width: 0
+      height: 0
+      border-style: solid
+      border-width: 0 0 corner-tag-size corner-tag-size
+      border-color: transparent transparent transparent #0dcaf0
+      border-top-left-radius: 2px
+      pointer-events: none

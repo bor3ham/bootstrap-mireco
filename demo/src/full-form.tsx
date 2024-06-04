@@ -1,5 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useMemo } from 'react'
 import * as ReactDOM from 'react-dom/client'
+import {
+  startOfWeek,
+  startOfMonth,
+  startOfDay,
+  endOfMonth,
+  addDays,
+  addHours,
+} from 'date-fns'
 
 import {
   CalendarMonth,
@@ -24,6 +32,7 @@ import {
   type DatetimeInputValue,
   type DatetimeRangeInputValue,
   type DateRangeInputValue,
+  dateAsDateValue,
 } from 'bootstrap-mireco'
 import type { SelectOption } from 'bootstrap-mireco' 
 
@@ -117,6 +126,85 @@ const FullForm = () => {
   const [select, setSelect] = useState(null)
   const [multiSelect, setMultiSelect] = useState<SelectOption[]>([])
   const [asyncSelect, setAsyncSelect] = useState(null)
+
+  const dateRangeShortcuts = useMemo(() => {
+    const today = new Date()
+    const weekStart = startOfWeek(today, { weekStartsOn: 1 })
+    const monthStart = startOfMonth(today)
+    const nextMonthStart = startOfDay(addDays(endOfMonth(monthStart), 1))
+    const s = []
+    s.push({
+      label: 'This week',
+      key: 'this_week',
+      value: {
+        start: dateAsDateValue(weekStart),
+        end: dateAsDateValue(addDays(weekStart, 6)),
+      },
+    })
+    s.push({
+      label: 'Next week',
+      key: 'next_week',
+      value: {
+        start: dateAsDateValue(addDays(weekStart, 7)),
+        end: dateAsDateValue(addDays(weekStart, 13)),
+      },
+    })
+    s.push({
+      label: 'This month',
+      key: 'this_month',
+      value: {
+        start: dateAsDateValue(monthStart),
+        end: dateAsDateValue(endOfMonth(monthStart)),
+      },
+    })
+    s.push({
+      label: 'Next month',
+      key: 'next_month',
+      value: {
+        start: dateAsDateValue(nextMonthStart),
+        end: dateAsDateValue(endOfMonth(nextMonthStart)),
+      },
+    })
+    return s
+  }, [])
+  const datetimeRangeShortcuts = useMemo(() => {
+    const todayStart = startOfDay(new Date())
+    const weekStart = startOfWeek(todayStart, { weekStartsOn: 1 })
+    const s = []
+    s.push({
+      label: 'This week',
+      key: 'this_week',
+      value: {
+        start: weekStart.valueOf(),
+        end: addDays(weekStart, 7).valueOf(),
+      },
+    })
+    s.push({
+      label: 'Next week',
+      key: 'next_week',
+      value: {
+        start: addDays(weekStart, 7).valueOf(),
+        end: addDays(weekStart, 14).valueOf(),
+      },
+    })
+    s.push({
+      label: 'Today workday',
+      key: 'today_workday',
+      value: {
+        start: addHours(todayStart, 9).valueOf(),
+        end: addHours(todayStart, 17).valueOf(),
+      },
+    })
+    s.push({
+      label: 'Tomorrow workday',
+      key: 'tomorrow_workday',
+      value: {
+        start: addHours(addDays(todayStart, 1), 9).valueOf(),
+        end: addHours(addDays(todayStart, 1), 17).valueOf(),
+      },
+    })
+    return s
+  }, [])
 
   const handleSubmit = (event: React.FormEvent) => {
     console.log('submitted!')
@@ -292,6 +380,7 @@ const FullForm = () => {
               startId="dateRange"
               value={dateRange}
               onChange={(newValue) => setDateRange(newValue)}
+              shortcuts={dateRangeShortcuts}
               {...fieldProps}
             />
           </InputWrapper>
@@ -304,6 +393,7 @@ const FullForm = () => {
               startDateId="datetimeRange"
               value={datetimeRange}
               onChange={(newValue) => setDatetimeRange(newValue)}
+              shortcuts={datetimeRangeShortcuts}
               {...fieldProps}
             />
           </InputWrapper>

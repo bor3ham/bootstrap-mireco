@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-mireco",
-  "version": "1.1.0",
+  "version": "2.0.5",
   "description": "Mireco wrapped in bootstrap styles",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,6 @@
     "lint": "./node_modules/.bin/eslint \"src/**/*.ts*\"",
     "build": "node scripts/build.js",
     "watch": "node scripts/watch.js",
-    "publish:demo": "git branch -D gh-pages && git push origin --delete gh-pages; git checkout -b gh-pages && cd demo && npm install && npm run build && cd .. && git add . && git add -f demo/dist && git add -f demo/node_modules/uptick-demo-site/dist && git commit -m \"Demo site build\" && git push origin gh-pages && git checkout master && git push origin `git subtree split --prefix demo gh-pages`:gh-pages --force",
     "prepare": "npm run build"
   },
   "peerDependencies": {
@@ -40,6 +39,6 @@
   },
   "dependencies": {
     "classnames": "^2.3.2",
-    "mireco": "^2.0.3"
+    "mireco": "^2.0.5"
   }
 }

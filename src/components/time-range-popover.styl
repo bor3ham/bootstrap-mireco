@@ -1,0 +1,51 @@
+.MIRECO-time-range-popover .MIRECO-advanced-popover-header
+  display: flex
+  flex-direction: row
+  
+  button
+    padding: 0.2rem 0.4rem
+    font-weight: 400
+    text-align: center
+    vertical-align: middle
+    user-select: none
+    
+    font-size: 0.9rem
+    line-height: 1.5
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+    cursor: pointer
+
+    color: #000
+    background-color: #eee
+    border: 1px solid #ced4da
+
+    &:hover
+      background-color: #e1e1e1
+  
+  button.shortcuts
+    float: left
+    position: absolute
+    border-radius: 0.25rem
+
+  > div
+    flex: 1
+    text-align: center
+
+    button
+      padding: 0.2rem 0.8rem
+      
+      &.active
+        color: #000
+        background-color: #fff
+        &:hover
+          background-color: #f8f9fa
+
+      &:first-child
+        border-top-left-radius: 0.25rem
+        border-bottom-left-radius: 0.25rem
+        &.active
+          border-right: rgba(255, 255, 255, 0)
+      &:last-child
+        border-top-right-radius: 0.25rem
+        border-bottom-right-radius: 0.25rem
+        &.active
+          border-left: rgba(255, 255, 255, 0)

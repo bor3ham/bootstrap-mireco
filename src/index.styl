@@ -9,15 +9,23 @@ current-text-colour = #fff
 contained-colour = #cce5ff
 contained-hover-colour = hsl(216, 90%, 84%)
 contained-text-colour = #333
+disabled-colour = #e9ecef
+disabled-text-colour = #495057
+disabled-placeholder-colour = #6c757d
 
+@import 'components/advanced-popover'
 @import 'components/clear-button'
 @import 'components/controls-popover'
 @import 'components/day-calendar'
 @import 'components/dropdown'
 @import 'components/month-calendar'
+@import 'components/time-range-popover'
 @import 'components/time-selector'
+@import 'components/widget-block'
 
 @import 'inputs/multi-select'
+@import 'inputs/date-range'
+@import 'inputs/datetime-range'
 
 .MIRECO-spinner
   path
@@ -44,10 +52,29 @@ contained-text-colour = #333
 
 .MIRECO-widget-block.form-control
   padding: 0
-  cursor: text
-  &.in-focus
-    border-color: #80bdff
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+  min-height: calc(2.25rem + 2px)
+  height: auto
+  &:not(.block)
+    width: auto
+  &:not(.disabled)
+    cursor: text
+    &.in-focus
+      border-color: #80bdff
+      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+  &.disabled
+    background-color: disabled-colour
+    color: disabled-text-colour
+    opacity: 1
+    // wish this was not necessary
+    &:focus
+      border: 1px solid #ced4da
+      box-shadow: none
+    input::placeholder
+      color: disabled-placeholder-colour
+      opacity: 1
+
+input.MIRECO-blockable.form-control:not(.block)
+  display: inline-block
 
 .MIRECO-text.MIRECO-embedded
   border: none
@@ -57,41 +84,25 @@ contained-text-colour = #333
     outline: none
 
 .MIRECO-datetime-controls, .MIRECO-datetime-range-controls
-  .MIRECO-day-calendar
-    border-right: 1px solid rgba(0,0,0,.125)
   .MIRECO-time-selector
     height: 18rem
 
-.MIRECO-widget-text
-  > input
-    padding-right: calc(0.75rem + 24px)
-  &.clearable input
-    padding-right: calc(0.75rem + 0.2rem + 48px)
-
-.MIRECO-multi-select
-  padding-right: calc(0.75rem + 24px)
-  &.clearable
-    padding-right: calc(0.75rem + 0.2rem + 48px)
-
-.MIRECO-widget-block
-  > svg, button > svg
-    path, rect, circle
-      transition: stroke 0.15s ease-in-out, fill 0.15s ease-in-out
-  
-  &:not(.in-focus)
-    > svg, > button:not(:hover) > svg
-      &.MIRECO-calendar, &.MIRECO-cross, &.MIRECO-chevron-down, &.MIRECO-chevron-left
-        path, rect, circle
-          stroke: #ccc !important
-      &.MIRECO-clock
-        path
-          stroke: #ccc !important
-        circle:first-child
-          stroke: #ccc !important
-        circle:last-child
-          fill: #ccc !important
-      &.MIRECO-hourglass
-        path:nth-child(1)
-          stroke: #ccc !important
-        path:nth-child(2)
-          fill: #ccc !important
+.MIRECO-day-calendar, .MIRECO-month-calendar
+  > .calendar-header
+    margin: 0.5rem 0
+    h5
+      margin: 0
+      margin-left: 1rem
+      font-size: 0.875rem
+      font-weight: normal
+      text-align: center
+    button
+      background: none
+      outline: none
+      border: none
+      margin: 0
+      cursor: pointer
+      svg path
+        stroke: #888 !important
+      &:hover svg path
+        stroke: #333 !important
