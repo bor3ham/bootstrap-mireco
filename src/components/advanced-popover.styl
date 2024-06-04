@@ -4,14 +4,6 @@
     padding: 0.25rem
     border-bottom: 1px solid rgba(0,0,0,.125)
 
-    // button
-    //   padding: 0.25rem 1rem
-    //   font-size: 0.8rem
-    //   &.content
-    //     &:not(:disabled):not(.disabled):not(.MIRECO-embedded)
-    //       &:not(.active)
-    //         background: none
-
     button
       &.shortcuts
         padding: 0.2rem 0.4rem
@@ -19,10 +11,9 @@
           height: 17px
           width: 17px
           vertical-align: middle
-        &:not(:disabled):not(.disabled):hover
-          > svg.MIRECO-lightning path
+          &.MIRECO-lightning path
             fill: #555 !important
-          > svg.MIRECO-chevron-left path
+          &.MIRECO-chevron-left path
             stroke: #555 !important
 
     .MIRECO-text
