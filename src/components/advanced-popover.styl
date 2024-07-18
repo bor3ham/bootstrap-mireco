@@ -1,8 +1,10 @@
 .MIRECO-advanced-popover
+  overflow: hidden
+
   .MIRECO-advanced-popover-header
     background: #eee
     padding: 0.25rem
-    border-bottom: 1px solid rgba(0,0,0,.125)
+    border-bottom: var(--bs-border-width) solid var(--bs-border-color)
 
     button
       &.shortcuts
@@ -23,20 +25,20 @@
       margin-bottom: 0
       margin-left: 0.3rem
 
-      color: #495057
-      background-color: #fff
-      border: 1px solid #ced4da
-      border-radius: 0.25rem
+      color: var(--bs-body-color)
+      background-color: var(--bs-body-bg)
+      border: var(--bs-border-width) solid var(--bs-border-color)
+      border-radius: 0.375rem
       transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
       &::placeholder
-        color: #6c757d
+        color: var(--bs-secondary-color)
         opacity: 1
       &:focus
-        color: #495057
-        border-color: #80bdff
+        color: var(--bs-body-color)
+        border-color: #86b7fe
         outline: 0
-        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
-    
+        box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25)
+
     &.shortcuts
       display: flex
       flex-direction: row
@@ -44,10 +46,10 @@
       button.shortcuts
         position: relative
         float: none
-  
+
   .MIRECO-day-calendar:not(:last-child)
-    border-right: 1px solid rgba(0,0,0,.125)
-  
+    border-right: var(--bs-border-width) solid var(--bs-border-color)
+
   .MIRECO-advanced-popover-body .MIRECO-dropdown
     max-width: none
     width: 100%

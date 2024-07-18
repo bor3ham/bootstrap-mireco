@@ -1,17 +1,11 @@
 @import '../node_modules/mireco/dist/layout.css'
 
-content-colour = #fff
+primary-button-text-colour = #fff
+primary-button-hover-colour = #0b5ed7
 content-hover-colour = #eee
-content-text-colour = #000
-current-colour = #007bff
-current-hover-colour = #0b5ed7
-current-text-colour = #fff
-contained-colour = #cce5ff
 contained-hover-colour = hsl(216, 90%, 84%)
 contained-text-colour = #333
-disabled-colour = #e9ecef
-disabled-text-colour = #495057
-disabled-placeholder-colour = #6c757d
+disabled-selected-colour = darken(#e9ecef, 10%)
 
 @import 'components/advanced-popover'
 @import 'components/clear-button'
@@ -29,8 +23,7 @@ disabled-placeholder-colour = #6c757d
 
 .MIRECO-spinner
   path
-    // stroke: #17a2b8 !important
-    stroke: rgb(0, 123, 255) !important
+    stroke: var(--bs-primary) !important
 
 .MIRECO-widget-text
   > .MIRECO-clear-button
@@ -48,29 +41,28 @@ disabled-placeholder-colour = #6c757d
       top: 6px
       right: calc(0.6rem + 24px)
       height: calc(100% - 12px)
-      border-right: 1px solid #ced4da
+      border-right: var(--bs-border-width) solid var(--bs-border-color)
 
 .MIRECO-widget-block.form-control
   padding: 0
-  min-height: calc(2.25rem + 2px)
   height: auto
   &:not(.block)
     width: auto
   &:not(.disabled)
     cursor: text
     &.in-focus
-      border-color: #80bdff
-      box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25)
+      border-color: #86b7fe
+      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25)
   &.disabled
-    background-color: disabled-colour
-    color: disabled-text-colour
+    background-color: var(--bs-secondary-bg)
+    color: var(--bs-body-color)
     opacity: 1
     // wish this was not necessary
     &:focus
-      border: 1px solid #ced4da
+      border: var(--bs-border-width) solid var(--bs-border-color)
       box-shadow: none
     input::placeholder
-      color: disabled-placeholder-colour
+      color: var(--bs-secondary-color)
       opacity: 1
 
 input.MIRECO-blockable.form-control:not(.block)
@@ -105,4 +97,7 @@ input.MIRECO-blockable.form-control:not(.block)
       svg path
         stroke: #888 !important
       &:hover svg path
-        stroke: #333 !important
+        stroke: var(--bs-body-color) !important
+
+.MIRECO-widget-block.form-control input
+  color: inherit

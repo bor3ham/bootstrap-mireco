@@ -20,18 +20,18 @@
       box-sizing: border-box
       cursor: default
       text-align: left
-    
+
     button:not(:disabled):not(.disabled)
       cursor: pointer
 
     button
-      background: content-colour
-      color: content-text-colour
+      background: var(--bs-body-bg)
+      color: var(--bs-body-color)
       &:hover
         background: content-hover-colour
     &.current
       button
-        background: current-colour
-        color: current-text-colour
+        background: var(--bs-primary)
+        color: primary-button-text-colour
         &:hover
-          background: current-hover-colour
+          background: primary-button-hover-colour

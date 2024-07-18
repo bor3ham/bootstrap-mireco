@@ -1,6 +1,6 @@
 {
   "name": "bootstrap-mireco",
-  "version": "2.0.5",
+  "version": "3.0.0",
   "description": "Mireco wrapped in bootstrap styles",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -38,6 +38,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
+    "bootstrap": "^5.3.3",
     "classnames": "^2.3.2",
     "mireco": "^2.0.5"
   }

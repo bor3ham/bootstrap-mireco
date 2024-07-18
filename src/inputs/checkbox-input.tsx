@@ -9,6 +9,6 @@ export const CheckboxInput = forwardRef<HTMLInputElement, CheckboxInputProps>((p
   <BaseCheckboxInput
     ref={ref}
     {...props}
-    className={classNames(props.className, 'custom-control-input')}
+    className={classNames(props.className, 'form-check-input')}
   />
 ))

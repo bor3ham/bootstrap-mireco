@@ -15,7 +15,7 @@
         line-height: 1.5em
         padding-right: 24px
 
-        background: contained-colour
+        background: var(--bs-primary-bg-subtle)
         color: contained-text-colour
 
         > .MIRECO-clear-button
@@ -30,8 +30,8 @@
             transition: stroke 0.15s ease-in-out, fill 0.15s ease-in-out
           &:not(:hover)
             svg path
-              stroke: blend(rgba(#333, 0.5), contained-colour) !important
+              stroke: rgba(#333, 0.5) !important
 
   &.disabled
     > ul.selected > li.option
-      background: darken(disabled-colour, 10%)
+      background: disabled-selected-colour

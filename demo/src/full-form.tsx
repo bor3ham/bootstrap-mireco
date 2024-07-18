@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useCallback } from 'react'
 import * as ReactDOM from 'react-dom/client'
 import {
   startOfWeek,
@@ -34,7 +34,7 @@ import {
   type DateRangeInputValue,
   dateAsDateValue,
 } from 'bootstrap-mireco'
-import type { SelectOption } from 'bootstrap-mireco' 
+import type { SelectOption } from 'bootstrap-mireco'
 
 const SELECT_OPTIONS = [
   {value: 'red', label: 'Red'},
@@ -87,8 +87,8 @@ const InputWrapper: React.FC<InputWrapperProps> = ({
   label,
   children,
 }) => (
-  <div className="form-group">
-    <label htmlFor={inputId}>{label}</label>
+  <div className="mb-3">
+    <label htmlFor={inputId} className="form-label">{label}</label>
     {!block && ' '}
     {children}
   </div>
@@ -218,6 +218,7 @@ const FullForm = () => {
           id="disable"
           value={disabled}
           onChange={setDisabled}
+          block
         >
           Disable form
         </Checkbox>
@@ -227,6 +228,7 @@ const FullForm = () => {
           id="block"
           value={block}
           onChange={setBlock}
+          block
         >
           Block mode
         </Checkbox>
